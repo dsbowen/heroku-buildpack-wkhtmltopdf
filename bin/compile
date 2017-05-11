@@ -10,15 +10,6 @@ WKHTMLTOPDF_PATH=$CACHE_DIR/wkhtmltox
 DESTINATION=$BUILD_DIR/bin  # will be `/app/bin` inside dyno
 
 
-# Check if xz-utils is installed so we can extract wkhtmltopdf's tarball
-# Heroku-16 does not have xz-utils installed (cedar-14 has)
-if [ "$STACK" = "heroku-16" ] && [ "$(which xz)" = "" ]; then
-	echo '-----> Installing xz-utils to extract wkhtmltopdf'
-	apt-get -qq update
-	apt-get -qq install -y xz-utils
-	apt-get clean
-fi
-
 # Download and extract wkhtmltopdf
 if [ ! -d "$WKHTMLTOPDF_PATH" ]; then
 	echo '-----> Downloading wkhtmltopdf'
