@@ -3,11 +3,11 @@
 
 BUILD_DIR=$1
 CACHE_DIR=$2
-ENV_DIR=$3
+
 WKHTMLTOPDF_URL="https://downloads.wkhtmltopdf.org/0.12/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz"
 XZ_FILENAME=$CACHE_DIR/$(basename $WKHTMLTOPDF_URL)
 WKHTMLTOPDF_PATH=$CACHE_DIR/wkhtmltox
-DESTINATION=$BUILD_DIR/bin
+DESTINATION=$BUILD_DIR/bin  # will be `/app/bin` inside dyno
 
 
 # Check if xz-utils is installed so we can extract wkhtmltopdf's tarball
@@ -20,7 +20,7 @@ if [ "$STACK" = "heroku-16" ] && [ "$(which xz)" = "" ]; then
 fi
 
 # Download and extract wkhtmltopdf
-if [ ! -f "$WKHTMLTOPDF_PATH" ]; then
+if [ ! -d "$WKHTMLTOPDF_PATH" ]; then
 	echo '-----> Downloading wkhtmltopdf'
 	wget --quiet --continue --output-document="$XZ_FILENAME" "$WKHTMLTOPDF_URL"
 
@@ -29,9 +29,9 @@ if [ ! -f "$WKHTMLTOPDF_PATH" ]; then
 	rm "$XZ_FILENAME"
 fi
 
-# Move files to /usr/local/
-if [ ! -f "$WKHTMLTOPDF_BIN" ]; then
-	echo '-----> Moving wkhtmltopdf binaries'
+# Move files to /app/bin
+if [ ! -f "$DESTINATION/wkhtmltopdf" ]; then
+	echo '-----> Moving wkhtmltopdf binaries to /app/bin'
 
 	if [ ! -d "$DESTINATION" ]; then
 		mkdir -p "$DESTINATION"
