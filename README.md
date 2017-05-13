@@ -10,14 +10,14 @@ and `heroku-16` stacks.
 Just add the buildpack to your heroku app by executing:
 
 ```bash
-heroku buildpacks:add https://github.com/turicas/heroku-buildpack-wkhtmltopdf.git
+heroku buildpacks:add https://github.com/simplefractal/heroku-buildpack-wkhtmltopdf.git
 ```
 
 You can also force this buildpack to be the first Heroku process by using the
 `--index` option:
 
 ```bash
-heroku buildpacks:add --index=1 https://github.com/turicas/heroku-buildpack-wkhtmltopdf.git
+heroku buildpacks:add --index=1 https://github.com/simplefractal/heroku-buildpack-wkhtmltopdf.git
 ```
 
 ## Usage
