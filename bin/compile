@@ -4,8 +4,8 @@
 BUILD_DIR=$1
 CACHE_DIR=$2
 
-WKHTMLTOPDF_URL="https://github.com/wkhtmltopdf/wkhtmltopdf/archive/0.12.5.tar.gz"
-GZ_FILENAME=$CACHE_DIR/$(basename $WKHTMLTOPDF_URL)
+WKHTMLTOPDF_URL="https://downloads.wkhtmltopdf.org/0.12/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz"
+XZ_FILENAME=$CACHE_DIR/$(basename $WKHTMLTOPDF_URL)
 WKHTMLTOPDF_PATH=$CACHE_DIR/wkhtmltox
 DESTINATION=$BUILD_DIR/bin  # will be `/app/bin` inside dyno
 
@@ -13,12 +13,12 @@ DESTINATION=$BUILD_DIR/bin  # will be `/app/bin` inside dyno
 # Download and extract wkhtmltopdf
 if [ ! -d "$WKHTMLTOPDF_PATH" ]; then
 	echo '-----> Downloading wkhtmltopdf'
-	mkdir -p $(dirname $GZ_FILENAME)
-	wget --quiet --continue --output-document="$GZ_FILENAME" "$WKHTMLTOPDF_URL"
+	mkdir -p $(dirname $XZ_FILENAME)
+	wget --quiet --continue --output-document="$XZ_FILENAME" "$WKHTMLTOPDF_URL"
 
 	echo '-----> Extracting wkhtmltopdf'
-	tar --gz --extract --file "$GZ_FILENAME" --directory "$CACHE_DIR"
-	rm "$GZ_FILENAME"
+	tar --xz --extract --file "$XZ_FILENAME" --directory "$CACHE_DIR"
+	rm "$XZ_FILENAME"
 fi
 
 # Move files to /app/bin
