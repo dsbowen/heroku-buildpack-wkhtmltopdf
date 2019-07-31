@@ -55,4 +55,4 @@ Want to see this buildpack running? See
 
 ## Credit
 
-Created by [Simple Fractal](https://devcenter.heroku.com/articles/heroku-18-stack) with small modifications by [Dillon Bowen](https://github.com/dsbowen)
+Created by [Simple Fractal](https://github.com/simplefractal) with small modifications by [Dillon Bowen](https://github.com/dsbowen)
