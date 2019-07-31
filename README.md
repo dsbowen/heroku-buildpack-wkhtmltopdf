@@ -52,3 +52,7 @@ This buildpack addresses the following issues:
 
 Want to see this buildpack running? See
 [websitetopdf](https://github.com/turicas/websitetopdf).
+
+## Credit
+
+Created by [Simple Fractal](https://devcenter.heroku.com/articles/heroku-18-stack) with small modifications by [Dillon Bowen](https://github.com/dsbowen)
