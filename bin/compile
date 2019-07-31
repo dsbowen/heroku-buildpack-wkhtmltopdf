@@ -14,7 +14,7 @@ DESTINATION=$BUILD_DIR/bin  # will be `/app/bin` inside dyno
 if [ ! -d "$WKHTMLTOPDF_PATH" ]; then
 	echo '-----> Downloading wkhtmltopdf'
 	mkdir -p $(dirname $GZ_FILENAME)
-	wget --quiet --continue --output-document="$XZ_FILENAME" "$WKHTMLTOPDF_URL"
+	wget --quiet --continue --output-document="$GZ_FILENAME" "$WKHTMLTOPDF_URL"
 
 	echo '-----> Extracting wkhtmltopdf'
 	tar --gz --extract --file "$GZ_FILENAME" --directory "$CACHE_DIR"
